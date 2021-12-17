@@ -23,6 +23,7 @@ app.use(express.json())
 
 app.get('/', function(req, res){
     res.sendFile(path.join(__dirname, './public/index.html'))
+    rollbar.info('html file served successfully.')
 })
 
 app.get('/js', function(req, res) {
