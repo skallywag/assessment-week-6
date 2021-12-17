@@ -39,7 +39,7 @@ app.get('/api/robots', (req, res) => {
         res.status(200).send(botsArr)
     } catch (error) {
         console.log('ERROR GETTING BOTS', error)
-
+        rollbar.error('ERROR GETTING BOTS')
         res.sendStatus(400)
     }
 })
@@ -49,12 +49,13 @@ app.get('/api/robots/five', (req, res) => {
         let shuffled = shuffleArray(bots)
         let choices = shuffled.slice(0, 5)
         let compDuo = shuffled.slice(6, 8)
+        rollbar.log('Bots have been served!')
+
         res.status(200).send({choices, compDuo})
     } catch (error) {
         console.log('ERROR GETTING FIVE BOTS', error)
         res.sendStatus(400)
     }
-    rollbar.log('Bots have been served!')
 })
 
 app.post('/api/duel', (req, res) => {
