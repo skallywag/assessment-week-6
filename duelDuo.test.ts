@@ -32,3 +32,12 @@ test('Draw button displays 5 bots', async () => {
 test('check if a bot got removed', async () => {
     
 })
+
+test('', async () => {
+    await driver.findElement(By.css('#draw'))
+})
+
+test('', async () => {
+    await driver.findElement(By.id('draw')).click()
+    await driver.findElement(By.xpath('(//button[text()="Add to Duo"])[1]')).click()
+})

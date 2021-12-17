@@ -2,18 +2,22 @@ const {shuffleArray} = require('./utils')
 
 
 // Didnt quite understand what to do here. Grabbed a bot object and ran tests with that.
-describe('Describe array should', () => {
+
+const testArr = []
+
+describe(' array should', () => {
     let shuffledArry = shuffleArray()
 
     test('', () => {
-
+        expect(Array.isArray(shuffleArray(testArr))).toBe(true)
     })
     
-    
-    test('', () => {
-        
+    test('should return an array of the same length', () => {
+        expect(shuffleArray(testArr)).toHaveLength(10)
     })
 })
+
+
 
 
 
