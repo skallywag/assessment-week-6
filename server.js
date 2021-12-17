@@ -14,6 +14,7 @@ var rollbar = new Rollbar({
 
 // record a generic message and send it to Rollbar
 rollbar.log('Connected!')
+rollbar.log('hello?')
 
 
 
@@ -49,6 +50,7 @@ app.get('/api/robots/five', (req, res) => {
         let shuffled = shuffleArray(bots)
         let choices = shuffled.slice(0, 5)
         let compDuo = shuffled.slice(6, 8)
+        
         rollbar.log('Bots have been served!')
 
         res.status(200).send({choices, compDuo})
@@ -99,6 +101,8 @@ app.get('/api/player', (req, res) => {
 })
 
 const port = process.env.PORT || 3000
+
+app.use(rollbar.errorHandler())
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`)
